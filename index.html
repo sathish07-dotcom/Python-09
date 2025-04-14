@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPS in python</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>OOPS in python</h1>
+
+    <h2><li>classes</li></h2>
+    <h2><li>objects</li></h2>
+    <h2><li>inherirtance </li></h2>
+    <h2><li>polymorphism</li></h2>
+    <div class="div">
+
+
+    <h3>Object-Oriented Programming (OOP)in Python is a programming paradigm that organizes code around **objects** and **classes**. It allows you to model real-world entities as objects, which have **attributes** (data) and **methods** (functions).
+</h3>
+    <h2>OOP in Python is built around four main principles:
+    </h2>
+    <h2><li>Encapsulation</li></h2>
+    <h2><li>Abstraction</li></h2>
+    <h2><li>Inheritance</li></h2>
+    <h2><li>Polymorphism</li></h2>
+
+    
+    <h2>Class and Objects</h2>
+    
+    <li>Class: A blueprint or template for creating objects. It defines a set of attributes and methods that the created objects (instances) will have.</li>
+    <li>Object: An instance of a class. Each object can have its own unique attributes.</li>
+<p>
+    # Defining a class <br>
+    class Dog:<br>
+        # Constructor (__init__ method)<br>
+        def __init__(self, name, age):<br>
+            self.name = name  # Instance variable<br>
+            self.age = age    # Instance variable<br><br>
+    
+        # Method to describe the dog<br>
+        def bark(self):<br>
+            print(f"{self.name} is barking!")<br><br>
+    
+    # Creating an object (instance of the Dog class)<br>
+    my_dog = Dog("Buddy", 5)<br><br>
+    
+    # Accessing object attributes<br>
+    print(my_dog.name)  # Output: Buddy<br>
+    print(my_dog.age)   # Output: 5<br><br>
+    
+    # Calling the object method<br>
+    my_dog.bark()  # Output: Buddy is barking!<br>
+    </p> 
+    <h2> Encapsulation</h2>
+    
+    <li>Encapsulation is the concept of bundling the data (attributes) and methods that operate on the data within a single unit (class). It restricts direct access to some of the class’s components, which is known as **data hiding**.
+    </li>
+    <li>In Python, you can achieve encapsulation using:</li>
+    <li>Public attributes: Accessible from outside the class.</li>
+    <li>Private attributes: Not directly accessible from outside the class (by convention, private attributes are prefixed with an underscore `_` or double underscore `__`).</li>
+    
+<p>
+    class Car: <br>
+        def __init__(self, make, model):<br>
+            self.make = make  # Public attribute<br>
+            self._model = model  # Private attribute<br><br>
+    
+        # Method to access private attribute<br>
+        def get_model(self):<br>
+            return self._model<br><br>
+    
+    # Creating an object<br>
+    my_car = Car("Toyota", "Camry")<br><br>
+    
+    # Accessing public attribute<br>
+    print(my_car.make)  # Output: Toyota<br><br>
+    
+    # Accessing private attribute directly is discouraged<br>
+    # print(my_car._model)  # Not recommended (but still possible)<br><br>
+    
+    # Accessing private attribute through a method<br>
+    print(my_car.get_model())  # Output: Camry
+    </p>
+    <h2>Abstraction</h2>
+    
+    <li>Abstraction is the process of hiding the implementation details and showing only the necessary functionality to the user. In Python, abstraction can be achieved using abstract classes and methods.
+    </li>
+    <li>Abstract Class: A class that cannot be instantiated and is meant to be subclassed.</li>
+    <li>Abstract Method: A method that is declared but contains no implementation. Subclasses must implement this method.</li>
+    
+<p>
+    from abc import ABC, abstractmethod<br><br>
+    
+    class Animal(ABC):<br>
+        @abstractmethod<br>
+        def sound(self):<br>
+            pass  # Abstract method, to be implemented by subclass<br><br>
+    
+    class Dog(Animal):<br>
+        def sound(self):<br>
+            return "Woof!"<br><br>
+    
+    class Cat(Animal):<br>
+        def sound(self):<br>
+            return "Meow!"<br><br>
+    
+    # Creating objects of Dog and Cat<br>
+    dog = Dog()<br>
+    cat = Cat()<br><br>
+    
+    # Calling the implemented sound method<br>
+    print(dog.sound())  # Output: Woof!<br>
+    print(cat.sound())  # Output: Meow!
+    </p>
+    <h2>Inheritance</h2>
+    
+    <li>Inheritance allows a class (child class) to inherit attributes and methods from another class (parent class). It promotes code reusability.
+    </li>
+    <li>Single inheritance: A child class inherits from a single parent class.</li>
+    <li>Multiple inheritance: A child class inherits from multiple parent classes.</li>
+<p>
+    # Parent class <br>
+    class Animal: <br>
+        def __init__(self, name): <br>
+            self.name = name <br> <br>
+    
+        def speak(self): <br>
+            print(f"{self.name} makes a sound") <br> <br>
+    
+    # Child class inheriting from Animal <br>
+    class Dog(Animal): <br>
+        def speak(self):  # Overriding the parent method <br>
+            print(f"{self.name} barks!") <br> <br>
+    
+    # Creating an object of Dog <br>
+    dog = Dog("Buddy") <br>
+    dog.speak()  # Output: Buddy barks! 
+    </p>
+    <p>
+
+    # Parent classes <br>
+    class Animal: <br>
+        def __init__(self, name): <br>
+            self.name = name <br> <br>
+    
+        def eat(self): <br>
+            print(f"{self.name} is eating.") <br> <br>
+    
+    class Pet: <br>
+        def play(self): <br>
+            print(f"{self.name} is playing.") <br> <br>
+    
+    # Child class inheriting from both Animal and Pet <br>
+    class Dog(Animal, Pet): <br>
+        def __init__(self, name): <br>
+            Animal.__init__(self, name) <br>
+            Pet.__init__(self) <br> <br>
+    
+    # Creating an object of Dog <br>
+    dog = Dog("Buddy") <br>
+    dog.eat()  # Output: Buddy is eating. <br>
+    dog.play()  # Output: Buddy is playing.
+    </p>
+    <h2>Polymorphism</h2>
+    
+    <li>Polymorphism allows objects of different classes to be treated as objects of a common superclass. The actual method to be called is determined at runtime. Polymorphism is often achieved through method overriding (in the case of inheritance) or through operator overloading.
+    </li>
+    <li>Method Overriding: A method in the child class has the same name as the one in the parent class but provides a different implementation.</li>
+    <li>Operator Overloading: Overloading operators (like `+`, `-`, etc.) to behave differently based on the objects.</li>
+    
+  <p>
+    class Animal: <br>
+        def speak(self): <br>
+            print("Animal makes a sound") <br> <br>
+    
+    class Dog(Animal): <br>
+        def speak(self): <br>
+            print("Dog barks") <br> <br>
+    
+    class Cat(Animal): <br>
+        def speak(self): <br>
+            print("Cat meows") <br> <br>
+    
+    # Polymorphism in action <br>
+    animals = [Dog(), Cat()] <br>
+    for animal in animals: <br>
+        animal.speak() <br> <br>
+    
+    Output: <br> <br>
+
+    Dog barks <br>
+    Cat meows <br>
+</p>
+<p>
+    #### Example of Operator Overloading: <br> <br>
+  
+    class Point: <br>
+        def __init__(self, x, y): <br>
+            self.x = x <br>
+            self.y = y <br> <br>
+    
+        # Overloading the + operator <br>
+        def __add__(self, other): <br>
+            return Point(self.x + other.x, self.y + other.y) <br> <br>
+    
+        def __str__(self): <br>
+            return f"({self.x}, {self.y})" <br> <br>
+    
+    # Creating Point objects <br>
+    p1 = Point(1, 2) <br>
+    p2 = Point(3, 4) <br> <br>
+    
+    # Adding two Point objects using overloaded + operator <br>
+    p3 = p1 + p2 <br>
+    print(p3)  # Output: (4, 6) <br>
+</p>
+   </div>
+</body>
+</html>
